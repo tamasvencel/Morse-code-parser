@@ -72,12 +72,12 @@
   }
 */
 var MorseCodeParser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,6],$V1=[1,7],$V2=[5,6],$V3=[1,10],$V4=[5,6,8],$V5=[5,6,8,11,12];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,6],$V2=[5,6],$V3=[1,9],$V4=[5,6,8];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"word_sequence":4,"EOF":5,"WORDSEP":6,"word":7,"LETTERSEP":8,"letter":9,"symbol_sequence":10,"DOT":11,"DASH":12,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",6:"WORDSEP",8:"LETTERSEP",11:"DOT",12:"DASH"},
-productions_: [0,[3,2],[4,3],[4,1],[7,3],[7,1],[9,1],[10,2],[10,2],[10,1],[10,1]],
+symbols_: {"error":2,"expressions":3,"word_sequence":4,"EOF":5,"WORDSEP":6,"word":7,"LETTERSEP":8,"letter":9,"DOT":10,"DASH":11,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",6:"WORDSEP",8:"LETTERSEP",10:"DOT",11:"DASH"},
+productions_: [0,[3,2],[4,3],[4,1],[7,3],[7,1],[9,2],[9,4],[9,4],[9,3],[9,1],[9,4],[9,3],[9,4],[9,2],[9,4],[9,3],[9,4],[9,2],[9,2],[9,3],[9,4],[9,4],[9,3],[9,3],[9,1],[9,3],[9,4],[9,3],[9,4],[9,4],[9,4],[9,5],[9,5],[9,5],[9,5],[9,5],[9,5],[9,5],[9,5],[9,5],[9,5]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -87,7 +87,7 @@ case 1:
  return $$[$0-1].trim(); 
 break;
 case 2:
- this.$ = $$[$0-2] + ' ' + $$[$0]; 
+ this.$ = $$[$0-2] + " " + $$[$0]; 
 break;
 case 3: case 5:
  this.$ = $$[$0]; 
@@ -96,24 +96,117 @@ case 4:
  this.$ = $$[$0-2] + $$[$0]; 
 break;
 case 6:
- this.$ = translate($$[$0]); 
+ this.$ = 'A'; 
 break;
 case 7:
- this.$ = $$[$0-1] + '.'; 
+ this.$ = 'B'; 
 break;
 case 8:
- this.$ = $$[$0-1] + '-'; 
+ this.$ = 'C'; 
 break;
 case 9:
- this.$ = '.'; 
+ this.$ = 'D'; 
 break;
 case 10:
- this.$ = '-'; 
+ this.$ = 'E'; 
+break;
+case 11:
+ this.$ = 'F'; 
+break;
+case 12:
+ this.$ = 'G'; 
+break;
+case 13:
+ this.$ = 'H'; 
+break;
+case 14:
+ this.$ = 'I'; 
+break;
+case 15:
+ this.$ = 'J'; 
+break;
+case 16:
+ this.$ = 'K'; 
+break;
+case 17:
+ this.$ = 'L'; 
+break;
+case 18:
+ this.$ = 'M'; 
+break;
+case 19:
+ this.$ = 'N'; 
+break;
+case 20:
+ this.$ = 'O'; 
+break;
+case 21:
+ this.$ = 'P'; 
+break;
+case 22:
+ this.$ = 'Q'; 
+break;
+case 23:
+ this.$ = 'R'; 
+break;
+case 24:
+ this.$ = 'S'; 
+break;
+case 25:
+ this.$ = 'T'; 
+break;
+case 26:
+ this.$ = 'U'; 
+break;
+case 27:
+ this.$ = 'V'; 
+break;
+case 28:
+ this.$ = 'W'; 
+break;
+case 29:
+ this.$ = 'X'; 
+break;
+case 30:
+ this.$ = 'Y'; 
+break;
+case 31:
+ this.$ = 'Z'; 
+break;
+case 32:
+ this.$ = '0'; 
+break;
+case 33:
+ this.$ = '1'; 
+break;
+case 34:
+ this.$ = '2'; 
+break;
+case 35:
+ this.$ = '3'; 
+break;
+case 36:
+ this.$ = '4'; 
+break;
+case 37:
+ this.$ = '5'; 
+break;
+case 38:
+ this.$ = '6'; 
+break;
+case 39:
+ this.$ = '7'; 
+break;
+case 40:
+ this.$ = '8'; 
+break;
+case 41:
+ this.$ = '9'; 
 break;
 }
 },
-table: [{3:1,4:2,7:3,9:4,10:5,11:$V0,12:$V1},{1:[3]},{5:[1,8],6:[1,9]},o($V2,[2,3],{8:$V3}),o($V4,[2,5]),o($V4,[2,6],{11:[1,11],12:[1,12]}),o($V5,[2,9]),o($V5,[2,10]),{1:[2,1]},{7:13,9:4,10:5,11:$V0,12:$V1},{9:14,10:5,11:$V0,12:$V1},o($V5,[2,7]),o($V5,[2,8]),o($V2,[2,2],{8:$V3}),o($V4,[2,4])],
-defaultActions: {8:[2,1]},
+table: [{3:1,4:2,7:3,9:4,10:$V0,11:$V1},{1:[3]},{5:[1,7],6:[1,8]},o($V2,[2,3],{8:$V3}),o($V4,[2,5]),o($V4,[2,10],{10:[1,11],11:[1,10]}),o($V4,[2,25],{10:[1,12],11:[1,13]}),{1:[2,1]},{7:14,9:4,10:$V0,11:$V1},{9:15,10:$V0,11:$V1},o($V4,[2,6],{10:[1,17],11:[1,16]}),o($V4,[2,14],{10:[1,19],11:[1,18]}),o($V4,[2,19],{10:[1,20],11:[1,21]}),o($V4,[2,18],{10:[1,22],11:[1,23]}),o($V2,[2,2],{8:$V3}),o($V4,[2,4]),o($V4,[2,28],{10:[1,25],11:[1,24]}),o($V4,[2,23],{10:[1,26]}),o($V4,[2,26],{10:[1,27],11:[1,28]}),o($V4,[2,24],{10:[1,29],11:[1,30]}),o($V4,[2,9],{10:[1,31],11:[1,32]}),o($V4,[2,16],{10:[1,33],11:[1,34]}),o($V4,[2,12],{10:[1,36],11:[1,35]}),o($V4,[2,20],{10:[1,38],11:[1,37]}),o($V4,[2,15],{11:[1,39]}),o($V4,[2,21]),o($V4,[2,17]),o($V4,[2,11]),{11:[1,40]},o($V4,[2,13],{10:[1,42],11:[1,41]}),o($V4,[2,27],{11:[1,43]}),o($V4,[2,7],{10:[1,44]}),o($V4,[2,29]),o($V4,[2,8]),o($V4,[2,30]),o($V4,[2,22]),o($V4,[2,31],{10:[1,45]}),{10:[1,47],11:[1,46]},{10:[1,48]},o($V4,[2,33]),o($V4,[2,34]),o($V4,[2,36]),o($V4,[2,37]),o($V4,[2,35]),o($V4,[2,38]),o($V4,[2,39]),o($V4,[2,32]),o($V4,[2,41]),o($V4,[2,40])],
+defaultActions: {7:[2,1]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -260,21 +353,7 @@ parse: function parse(input) {
     }
     return true;
 }};
-
-
-function translate(morse) {
-    const morseToChar = {
-        ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
-        "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J",
-        "-.-": "K", ".-..": "L", "--": "M", "-.": "N", "---": "O",
-        ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T",
-        "..-": "U", "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y",
-        "--..": "Z", "-----": "0", ".----": "1", "..---": "2",
-        "...--": "3", "....-": "4", ".....": "5", "-....": "6",
-        "--...": "7", "---..": "8", "----.": "9"
-    };
-    return morseToChar[morse] || '';
-}/* generated by jison-lex 0.3.4 */
+/* generated by jison-lex 0.3.4 */
 var lexer = (function(){
 var lexer = ({
 
@@ -602,17 +681,17 @@ options: {},
 performAction: function anonymous(yy,yy_,$avoiding_name_collisions,YY_START) {
 var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
-case 0:return 11;       /* . (dot) */
+case 0:return 10;        /* . (dot) */
 break;
-case 1:return 12;      /* - (dash) */
+case 1:return 11;       /* - (dash) */
 break;
-case 2:return 8; /* / (separates letters) */
+case 2:return 8;  /* / separates letters */
 break;
-case 3:return 6;   /* | (separates words) */
+case 3:return 6;    /* | separates words */
 break;
-case 4:/* skip whitespace */
+case 4:/* Skip whitespace */
 break;
-case 5:return 5
+case 5:return 5;        /* End of input */
 break;
 }
 },

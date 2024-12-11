@@ -1,26 +1,37 @@
-const TextParser = require("./TextParser");
-const MorseCodeParser = require("./MorseCodeParser");
-const readline = require("readline");
+const MorseParser = require("./MorseCodeParser");
 
-// Create a readline interface
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const tests = [
+  // Decoding (Morse-to-Text)
+  { input: "... / --- / ...", expected: "SOS" },
+  { input: ".---- / ..--- / ...--", expected: "123" },
+  { input: ".- / -... / -.-. | -.. / . / ..-.", expected: "ABC DEF" },
+  {
+    input: ".---- / ..--- / ...-- | ....- / ..... / -....",
+    expected: "123 456",
+  },
+  { input: "-.... / --... / ---.. / ----. / -----", expected: "67890" },
 
-// Prompt user for text input
-rl.question("Enter text to encode into Morse code: ", (inputText) => {
+  // Encoding (Text-to-Morse)
+  // { input: "SOS", expected: "... / --- / ..." },
+  // { input: "123", expected: ".---- / ..--- / ...--" },
+  // { input: "ABC DEF", expected: ".- / -... / -.-. | -.. / . / ..-." },
+  // { input: "123 456", expected: ".---- / ..--- / ...-- | ....- / ..... / -...." },
+  // { input: "67890", expected: "-.... / --... / ---.. / ----. / -----" },
+];
+
+// Run tests
+tests.forEach(({ input, expected }, i) => {
   try {
-    // Encode text to Morse code
-    const morseCode = TextParser.parse(inputText);
-    console.log(`Encoded Morse Code: ${morseCode}`);
-
-    // Decode Morse code back to text
-    const decodedText = MorseCodeParser.parse(morseCode);
-    console.log(`Decoded Text: ${decodedText}`);
+    const result = MorseParser.parse(input);
+    if (result === expected) {
+      console.log(`Test ${i + 1} Passed: "${input}" -> "${result}"`);
+    } else {
+      console.error(`Test ${i + 1} Failed: "${input}"`);
+      console.error(`  Expected: "${expected}"`);
+      console.error(`  Received: "${result}"`);
+    }
   } catch (err) {
-    console.error("Error:", err.message);
-  } finally {
-    rl.close();
+    console.error(`Test ${i + 1} Failed with Error: "${input}"`);
+    console.error(err.message);
   }
 });
