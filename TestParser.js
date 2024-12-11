@@ -1,11 +1,11 @@
-const parser = require("./MorseCodeParser");
+const MorseParser = require("./MorseCodeParser.js");
 
 const input = ".... / . / .-.. / .-.. / --- | .-- / --- / .-. / .-.. / -..";
+const parser = MorseParser.parser;
 
 try {
-  const output = parser.parse(input);
-
-  console.log(`Decoded Morse code: ${output}`);
-} catch (error) {
-  console.error(`Parsing error: ${error}`);
+  const result = parser.parse(input);
+  console.log("Decoded Text:", result);
+} catch (err) {
+  console.error("Error:", err.message);
 }
