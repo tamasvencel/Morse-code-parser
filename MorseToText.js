@@ -71,7 +71,7 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var MorseCodeParser = (function(){
+var MorseToText = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,6],$V2=[5,6],$V3=[1,9],$V4=[5,6,8];
 var parser = {trace: function trace () { },
 yy: {},
@@ -710,9 +710,9 @@ return new Parser;
 
 
 if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = MorseCodeParser;
-exports.Parser = MorseCodeParser.Parser;
-exports.parse = function () { return MorseCodeParser.parse.apply(MorseCodeParser, arguments); };
+exports.parser = MorseToText;
+exports.Parser = MorseToText.Parser;
+exports.parse = function () { return MorseToText.parse.apply(MorseToText, arguments); };
 exports.main = function commonjsMain (args) {
     if (!args[1]) {
         console.log('Usage: '+args[0]+' FILE');

@@ -1,4 +1,4 @@
-const MorseCodeParser = require("./MorseCodeParser"); // Morse-to-text parser
+const MorseCodeParser = require("./MorseToText"); // Morse-to-text parser
 const TextToMorseParser = require("./TextToMorse"); // Text-to-Morse parser
 
 const testCases = [
