@@ -1,37 +1,56 @@
-const MorseParser = require("./MorseCodeParser");
+const MorseCodeParser = require("./MorseCodeParser"); // Morse-to-text parser
+const TextToMorseParser = require("./TextToMorse"); // Text-to-Morse parser
 
-const tests = [
-  // Decoding (Morse-to-Text)
-  { input: "... / --- / ...", expected: "SOS" },
-  { input: ".---- / ..--- / ...--", expected: "123" },
-  { input: ".- / -... / -.-. | -.. / . / ..-.", expected: "ABC DEF" },
-  {
-    input: ".---- / ..--- / ...-- | ....- / ..... / -....",
-    expected: "123 456",
-  },
-  { input: "-.... / --... / ---.. / ----. / -----", expected: "67890" },
-
-  // Encoding (Text-to-Morse)
-  // { input: "SOS", expected: "... / --- / ..." },
-  // { input: "123", expected: ".---- / ..--- / ...--" },
-  // { input: "ABC DEF", expected: ".- / -... / -.-. | -.. / . / ..-." },
-  // { input: "123 456", expected: ".---- / ..--- / ...-- | ....- / ..... / -...." },
-  // { input: "67890", expected: "-.... / --... / ---.. / ----. / -----" },
+const testCases = [
+  "A", // Single letter
+  "HELLO", // Simple word
+  "12345", // Simple numbers
+  "HELLO WORLD", // Multiple words
+  "MORSE CODE", // Uppercase with space
+  "PROGRAMMING", // Long word
+  "SOS", // Classic example
+  "TEST CASE", // Two words
+  "ABC123", // Mixed letters and numbers
+  "9876543210", // All numbers
+  "AAAAA", // Repeated letters
+  "00000", // Repeated numbers
+  "HELLO123", // Mixed letters and numbers
+  "CODE PARSER", // Phrase with two words
+  "THIS IS A TEST", // Sentence with multiple words
+  "LONG SENTENCE HERE", // Longer sentence
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ", // Full alphabet
+  "1234567890", // All numbers in sequence
+  "EDGE CASE", // Edge case phrase
+  "PARSE CHECK", // Another edge phrase
 ];
 
-// Run tests
-tests.forEach(({ input, expected }, i) => {
-  try {
-    const result = MorseParser.parse(input);
-    if (result === expected) {
-      console.log(`Test ${i + 1} Passed: "${input}" -> "${result}"`);
-    } else {
-      console.error(`Test ${i + 1} Failed: "${input}"`);
-      console.error(`  Expected: "${expected}"`);
-      console.error(`  Received: "${result}"`);
+function runTests() {
+  testCases.forEach((text, i) => {
+    try {
+      // Step 1: Encode text to Morse code
+      const morseCode = TextToMorseParser.parse(text);
+
+      // Step 2: Decode Morse code back to text
+      const decodedText = MorseCodeParser.parse(morseCode);
+
+      // Step 3: Verify round-trip integrity
+      if (decodedText === text) {
+        console.log(
+          `Test ${
+            i + 1
+          } Passed: "${text}" -> "${morseCode}" -> "${decodedText}"`
+        );
+      } else {
+        console.error(`Test ${i + 1} Failed: "${text}"`);
+        console.error(`  Intermediate Morse: "${morseCode}"`);
+        console.error(`  Decoded Text: "${decodedText}"`);
+      }
+    } catch (err) {
+      console.error(`Test ${i + 1} Failed with Error: "${text}"`);
+      console.error(err.message);
     }
-  } catch (err) {
-    console.error(`Test ${i + 1} Failed with Error: "${input}"`);
-    console.error(err.message);
-  }
-});
+  });
+}
+
+// Run the tests
+runTests();
